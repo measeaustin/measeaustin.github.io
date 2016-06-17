@@ -1,140 +1,79 @@
-<head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Script Tutorials" />
-    <title>Responsive website using AngularJS | Script Tutorials</title>
-    <meta name="description" content="Responsive website using AngularJS - demo page">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <!-- add styles -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- add javascripts -->
-    <script src="js/jquery-2.0.3.min.js"></script>
-    <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    
-    <header>
-        <div class="wrap">
-            <!-- logo -->
-            <a href="#!"><img class="logo" src="images/logo.png" /></a>
-            <!-- navigation menu -->
-            <nav>
-                <ul>
-                    <li><a id="workBtn" href="#!/" ng-class="{activeSmall:part == 'projects'}" >Our Projects</a></li>
-                    <li><a id="privacyBtn" href="#!/privacy" ng-class="{activeSmall:part == 'privacy'}">Privacy & Terms</a></li>
-                    <li><a id="aboutBtn" href="#!/about" ng-class="{activeSmall:part == 'about'}">About</a></li>
-                    <li style="margin-right:0px"><a id="contactBtn" class="active" href="javascript: void(0)" ng-click="showForm()">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <header>
-        <div class="paddRow contactRow">
-            <div class="wrap">
-                <div class="head">Contact Us</div>
-                <img class="close" src="images/close.png" ng-click="closeForm()" />
-                <form ng-submit="save()" class="contactForm" name="form" ng-hide="loaded">
-                    <input class="input" required="required" type="text" name="name" placeholder="your name" ng-model="message.name" />
-                    <input class="input email" required="required" type="email" name="email" value="" placeholder="your email" ng-model="message.email" /><br />
-                    <textarea class="textarea" rows="5" required="required" placeholder="your message" ng-model="message.text" ></textarea>
-                    <button class="btn green">send message</button>
-                </form>
-                <!-- contact us form response messages -->
-                <div ng-show="process" style="text-align:center">
-                    <img class="loader" src="images/loader.png" />
-                </div>
-                <div ng-show="success"><p>Your message has been sent, thank you.</p></div>
-            </div>
-        </div>
-    
-        <div style="position:relative">
-            <div style="width:100%" ng-view ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
-        </div>
-    </header>
-    <div style="width:100%">
-    <a class="projectObj" href="#!/project/product1" style="background-color:#87b822">
-        <div class="wrap">
-            <div class="name">Product #1</div>
-            <img class="img" src="images/element.png" />
-        </div>
-    </a>
-    <a class="projectObj" href="#!/project/product2" style="background-color:#3f91d2">
-        <div class="wrap">
-            <div class="name">Product #2</div>
-            <img class="img" src="images/element.png" />
-        </div>
-    </a>
-    <a class="projectObj" href="#!/project/product3" style="background-color:#f1784d">
-        <div class="wrap">
-            <div class="name">Product #3</div>
-            <img class="img" src="images/element.png" />
-        </div>
-    </a>
-    <a class="projectObj" href="#!/project/product4" style="background-color:#f0c42c">
-        <div class="wrap">
-            <div class="name">Product #4</div>
-            <img class="img" src="images/element.png" />
-        </div>
-    </a>
-    <ng-include src="'pages/footer.html'"></ng-include>
-</div>
-<script>
-$('.projectObj').bind('click', function (e) {
-    e.preventDefault();
-    var me = this;
-    var width = $(me).width() / 1.5;
-    $(me).find('.wrap').width($(me).find('.wrap').width());
-    $(me).animate({
-        opacity: 0,
-        marginLeft: -width
-    }, 500);
-    var delayN = 150;
-    var delayP = 150;
-    var nextEl = $(me).nextAll('.projectObj');
-    var prevEl = $(me).prevAll('.projectObj');
-    nextEl.each(function (index, elem) {
-        setTimeout(function () {
-            $(elem).find('.wrap').width($(elem).find('.wrap').width());
-            $(elem).animate({
-                opacity: 0,
-                marginLeft: -width
-              }, 500, function () {
-            });
-        }, delayN);
-        delayN += 100;
-    });
-    prevEl.each(function (index, elem) {
-        setTimeout(function () {
-            $(elem).find('.wrap').width($(elem).find('.wrap').width());
-            $(elem).animate({
-                opacity: 0,
-                marginLeft: -width
-              }, 500, function () {
-            });
-        }, delayP);
-        delayP += 100;
-    });
-    setTimeout(function () {
-        document.location = $(me).attr('href');
-    },1000)
-    return false;
-});
-</script>
-<div style="width:100%">
-    <div class="projectHead product">
-        <div class="wrap">
-            <div class="text left">
-                <h1>Product 1 page</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et ligula accumsan, pharetra nibh nec, facilisis nulla. In pretium semper venenatis. In adipiscing augue elit, at venenatis enim suscipit a. Fusce vitae justo tristique, ultrices mi metus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et ligula accumsan, pharetra nibh nec, facilisis nulla. In pretium semper venenatis. In adipiscing augue elit, at venenatis enim suscipit a. Fusce vitae justo tristique, ultrices mi metus.</p>
-                <a class="btn" href="javascript: void(0)">download the app</a>
-            </div>
-            <img class="picture right" src="images/element.png" />
-            <div style="clear:both"></div>
-        </div>
-    </div>
-    <ng-include src="'pages/footer.html'"></ng-include>
-</div>
 
-</head
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Austin Mease - Software Engineer">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/css" >
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.ico">
+    <title>Austin Mease</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div id="header" class="container-fluid">
+      <div class="container">
+        <h1>Austin Mease</h1>
+        <div class="links">
+          <ul>
+            <li><a href="https://github.com/bladdragon" target="_blank"><i class="fa fa-github"></i> GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/austin-mease-39286090" target="_blank"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+            <li><a href="mailto:measeaustin@yahoo.com"><i class="fa fa-envelope"></i> Email</a></li>
+            <li><a href="https://angel.co/austin-mease" target="_blank"><i class="fa fa-angellist"></i> AngelList</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <a name="about"></a>
+    <div id="about" class="container-fluid">
+    <!-- <hr class="no-top-margin"> -->
+    <div class="container content-section">
+      <h4 class="title">About Me</h4>
+      <div class="row">
+        <div class="col-sm-9">
+          
+          <p></p>
+          
+        </div>
+        <div class="col-sm-3" style="text-align:center;">
+          <img class="img-fluid img-rounded center-block" src="./images/photo.png" />         
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- Games -->
+    <a name="projects"></a>
+    <div id="projects" class="container-fluid bg-paper">
+    <!-- <hr class="no-top-margin"> -->
+    <div class="container content-section">
+      <h4 class="title">MyNeighborhood</h4>
+      <div class="row">
+        <div class="col-lg-4">
+          <a class="cardlink" href="http://myneighborhood.github.io/">
+            <div class="card">
+              <div class="card-block card-block-title">
+                <h4 class="card-title">MyNeighborhood</h4>
+              </div>
+              </a>
+              <div class="card-block card-block-body">
+                <p class="card-text">Website & app to analyze wear to live by proximity to a location, normally a workplace </p>
+              </div>
+            </div>
+  
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="./scripts/jquery.min.js"></script>
+    <script src="./scripts/bootstrap.js"></script>
+  
+</body></html>
